@@ -6,7 +6,7 @@ x-logging: &logging
 
 services:
   postgres:
-    image: postgres:15.4-alpine
+    image: postgres:${POSTGRES_VERSION}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "keycloak"]
@@ -27,7 +27,7 @@ services:
     logging: *logging
 
   keycloak:
-    image: quay.io/keycloak/keycloak:22.0.3
+    image: quay.io/keycloak/keycloak:${KC_VERSION}
     command: ["start-dev", "--import-realm"]
     restart: unless-stopped
     environment:
@@ -54,7 +54,7 @@ services:
     logging: *logging
 
   prometheus:
-    image: prom/prometheus:v2.47.0
+    image: prom/prometheus:${PROMETHEUS_VERSION}
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -76,7 +76,7 @@ services:
     logging: *logging
 
   grafana:
-    image: grafana/grafana:10.1.1
+    image: grafana/grafana:${GF_VERSION}
     restart: unless-stopped
     network_mode: host
     healthcheck:
