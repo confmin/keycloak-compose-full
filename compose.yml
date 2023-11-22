@@ -77,7 +77,7 @@ services:
     logging: *logging
 
   grafana:
-    image: grafana/grafana:${GF_VERSION}
+    image: grafana/grafana-oss:${GF_VERSION}
     restart: unless-stopped
     network_mode: host
     healthcheck:
