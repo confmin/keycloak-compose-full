@@ -24,7 +24,7 @@ services:
   keycloak:
     # image: quay.io/keycloak/keycloak:${KC_VERSION}
     # use when CPU does not support x86-64-v2
-    image: ghcr.io/daniel-marynicz/keycloak:${KC_VERSION}
+    image: ghcr.io/daniel-marynicz/keycloak:22.0.1
     command: ["start-dev", "--import-realm"]
     restart: unless-stopped
     environment:
